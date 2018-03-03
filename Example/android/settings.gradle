@@ -1,3 +1,5 @@
 rootProject.name = 'Example'
+include ':react-native-form-sheet'
+project(':react-native-form-sheet').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-form-sheet/android')
 
 include ':app'
