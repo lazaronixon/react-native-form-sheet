@@ -1,0 +1,9 @@
+Example/
+
+# Android/IntelliJ
+#
+android/build/
+.idea
+.gradle
+local.properties
+*.iml
