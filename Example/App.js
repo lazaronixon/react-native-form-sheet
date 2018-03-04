@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { Platform, Text, View, StyleSheet, Button } from 'react-native';
+import FormSheet from 'react-native-form-sheet';
 
 export default class App extends Component {
 
-  showFormSheet = () => {
-    alert('formsheet')
+  presentFormSheet = () => {
+    FormSheet.present('ModalView', {title: 'Hello', message: 'This is modal!'})
   }
 
   render() {
@@ -13,7 +14,7 @@ export default class App extends Component {
         <Text style={styles.welcome}>
           Welcome to React Native!
         </Text>
-        <Button onPress={this.showFormSheet} title="Show FormSheet" />
+        <Button onPress={this.presentFormSheet} title="Show FormSheet" />
       </View>
     );
   }

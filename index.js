@@ -1,6 +1,16 @@
+import { NativeModules } from 'react-native'
 
-import { NativeModules } from 'react-native';
+const RNFormSheetManager = NativeModules.RNFormSheetManager || NativeModules.RNFormSheetModule
 
-const { RNFormSheet } = NativeModules;
+class FormSheet {
 
-export default RNFormSheet;
+  static present(component, passProps) {
+    RNFormSheetManager.present(component, passProps)
+  }
+
+  static dismiss() {
+    RNFormSheetManager.dismiss()
+  }
+}
+
+module.exports = FormSheet;
