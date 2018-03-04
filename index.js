@@ -4,8 +4,8 @@ const RNFormSheetManager = NativeModules.RNFormSheetManager || NativeModules.RNF
 
 class FormSheet {
 
-  static present(component, passProps) {
-    RNFormSheetManager.present(component, passProps)
+  static present(options) {
+    RNFormSheetManager.present(options)
   }
 
   static dismiss() {

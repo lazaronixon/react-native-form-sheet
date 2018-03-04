@@ -5,7 +5,7 @@ import FormSheet from 'react-native-form-sheet';
 export default class App extends Component {
 
   presentFormSheet = () => {
-    FormSheet.present('ModalView', {title: 'Hello', message: 'This is modal!'})
+    FormSheet.present({component: 'ModalView', width: 280, height: 380, passProps: {title: 'Hello', message: 'This is modal!'}})
   }
 
   render() {

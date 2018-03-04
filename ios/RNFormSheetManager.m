@@ -1,4 +1,5 @@
 #import <React/RCTRootView.h>
+#import <React/RCTConvert.h>
 #import "RNFormSheetManager.h"
 #import "MZFormSheetPresentationController/MZFormSheetPresentationViewController.h"
 
@@ -8,20 +9,25 @@
 
 RCT_EXPORT_MODULE()
 
-RCT_EXPORT_METHOD(present:(NSString *)component passProps:(NSDictionary *)passProps) {
+RCT_EXPORT_METHOD(present:(NSDictionary *)options) {
+    NSString *component = [RCTConvert NSString:options[@"component"]];
+    NSInteger width = [RCTConvert NSInteger:options[@"width"]];
+    NSInteger height = [RCTConvert NSInteger:options[@"height"]];
+    NSDictionary *passProps = [RCTConvert NSDictionary:options[@"passProps"]];
+    
     UIViewController *viewController = [[UIViewController alloc] init];
     viewController.view = [[RCTRootView alloc] initWithBridge:self.bridge moduleName:component initialProperties:passProps];
     
     MZFormSheetPresentationViewController *formSheetController = [[MZFormSheetPresentationViewController alloc] initWithContentViewController:viewController];
+    formSheetController.presentationController.contentViewSize = CGSizeMake(width, height);
     formSheetController.contentViewControllerTransitionStyle = MZFormSheetPresentationTransitionStyleBounce;
     formSheetController.presentationController.blurEffectStyle = UIBlurEffectStyleExtraLight;
     formSheetController.presentationController.shouldDismissOnBackgroundViewTap = YES;
     formSheetController.presentationController.shouldApplyBackgroundBlurEffect = YES;
     formSheetController.presentationController.shouldCenterVertically = YES;
-    formSheetController.shadowRadius = 6.0;
     formSheetController.contentViewCornerRadius = 8.0;
+    formSheetController.shadowRadius = 6.0;
     formSheetController.view.layer.shadowOpacity = 0.1;
-    formSheetController.presentationController.contentViewSize = CGSizeMake(280, 380);
     
     [[self rootViewController] presentViewController:formSheetController animated:YES completion:nil];
 }
