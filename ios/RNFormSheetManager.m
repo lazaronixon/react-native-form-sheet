@@ -21,7 +21,6 @@ RCT_EXPORT_METHOD(present:(NSDictionary *)options) {
     MZFormSheetPresentationViewController *formSheetController = [[MZFormSheetPresentationViewController alloc] initWithContentViewController:viewController];
     formSheetController.presentationController.contentViewSize = CGSizeMake(width, height);
     formSheetController.contentViewControllerTransitionStyle = MZFormSheetPresentationTransitionStyleBounce;
-    formSheetController.presentationController.blurEffectStyle = UIBlurEffectStyleExtraLight;
     formSheetController.presentationController.shouldDismissOnBackgroundViewTap = YES;
     formSheetController.presentationController.shouldApplyBackgroundBlurEffect = YES;
     formSheetController.presentationController.shouldCenterVertically = YES;
@@ -29,15 +28,17 @@ RCT_EXPORT_METHOD(present:(NSDictionary *)options) {
     formSheetController.shadowRadius = 6.0;
     formSheetController.view.layer.shadowOpacity = 0.1;
     
-    [[self rootViewController] presentViewController:formSheetController animated:YES completion:nil];
+    [[self topController] presentViewController:formSheetController animated:YES completion:nil];
 }
 
 RCT_EXPORT_METHOD(dismiss) {
-    [[self rootViewController] dismissViewControllerAnimated:YES completion:nil];
+    [[self topController] dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (UIViewController *)rootViewController {
-    return [UIApplication sharedApplication].delegate.window.rootViewController;
+- (UIViewController *)topController {
+    UIViewController *topController = [UIApplication sharedApplication].keyWindow.rootViewController;
+    while (topController.presentedViewController) { topController = topController.presentedViewController; }
+    return topController;
 }
 
 - (dispatch_queue_t)methodQueue {
