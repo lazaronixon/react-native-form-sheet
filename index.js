@@ -5,7 +5,8 @@ const RNFormSheetManager = NativeModules.RNFormSheetManager || NativeModules.RNF
 class FormSheet {
 
   static present(options) {
-    RNFormSheetManager.present(options)
+    const defaults = { shouldDismissOnBackgroundViewTap: true }
+    RNFormSheetManager.present({...defaults, ...options})
   }
 
   static dismiss() {

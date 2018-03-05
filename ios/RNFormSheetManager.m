@@ -14,14 +14,15 @@ RCT_EXPORT_METHOD(present:(NSDictionary *)options) {
     NSInteger width = [RCTConvert NSInteger:options[@"width"]];
     NSInteger height = [RCTConvert NSInteger:options[@"height"]];
     NSDictionary *passProps = [RCTConvert NSDictionary:options[@"passProps"]];
+    BOOL shouldDismissOnBackgroundViewTap = [RCTConvert BOOL:options[@"shouldDismissOnBackgroundViewTap"]];
     
     UIViewController *viewController = [[UIViewController alloc] init];
     viewController.view = [[RCTRootView alloc] initWithBridge:self.bridge moduleName:component initialProperties:passProps];
     
     MZFormSheetPresentationViewController *formSheetController = [[MZFormSheetPresentationViewController alloc] initWithContentViewController:viewController];
     formSheetController.presentationController.contentViewSize = CGSizeMake(width, height);
-    formSheetController.contentViewControllerTransitionStyle = MZFormSheetPresentationTransitionStyleBounce;
-    formSheetController.presentationController.shouldDismissOnBackgroundViewTap = YES;
+    formSheetController.presentationController.shouldDismissOnBackgroundViewTap = shouldDismissOnBackgroundViewTap;
+    formSheetController.contentViewControllerTransitionStyle = MZFormSheetPresentationTransitionStyleFade;
     formSheetController.presentationController.shouldApplyBackgroundBlurEffect = YES;
     formSheetController.presentationController.shouldCenterVertically = YES;
     formSheetController.contentViewCornerRadius = 8.0;

@@ -46,8 +46,10 @@ public class RNFormSheetModule extends ReactContextBaseJavaModule {
                 String component = options.getString("component");
                 double width = options.getDouble("width");
                 double height = options.getDouble("height");
+                boolean shouldDismissOnBackgroundViewTap = options.getBoolean("shouldDismissOnBackgroundViewTap");
                 ReadableMap props = options.hasKey("passProps") ? options.getMap("passProps") : null;
                 Bundle passProps = props != null ? Arguments.toBundle(props) : null;
+
 
                 AlertDialog.Builder mBuilder = new AlertDialog.Builder(getCurrentActivity());
 
@@ -59,6 +61,7 @@ public class RNFormSheetModule extends ReactContextBaseJavaModule {
                 mBuilder.setView(dialogView);
                 if (alertDialog != null) alertDialog.dismiss();
                 alertDialog = mBuilder.create();
+                alertDialog.setCanceledOnTouchOutside(shouldDismissOnBackgroundViewTap);
                 alertDialog.show();
                 alertDialog.getWindow().setLayout(round(toPixelFromDIP(width)), round(toPixelFromDIP(height)));
             }
