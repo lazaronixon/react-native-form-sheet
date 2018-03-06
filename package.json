@@ -1,16 +1,23 @@
 {
   "name": "react-native-form-sheet",
   "version": "1.0.0",
-  "description": "",
+  "description": "A native dialog solution for React Native.",
+  "author": "Lázaro Nixon <lazaronixon@hotmail.com>",
+  "homepage": "https://github.com/lazaronixon/react-native-form-sheet",
+  "license": "MIT",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lazaronixon/react-native-turbolinks.git"
   },
   "keywords": [
-    "react-native"
+    "react-native",
+    "react",
+    "native",
+    "modal",
+    "dialog",
+    "FormSheet"
   ],
-  "author": "",
-  "license": "",
   "peerDependencies": {
     "react-native": "^0.54.0"
   }
