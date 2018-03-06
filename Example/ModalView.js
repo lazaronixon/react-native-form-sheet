@@ -11,9 +11,9 @@ export default class ModalView extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.h1}>{this.props.title}</Text>
-        <Text style={styles.p}>{this.props.message}</Text>
-        <Button onPress={this.dismiss} title="Dismiss" />
+        <Text style={styles.h1}>Hello</Text>
+        <Text style={styles.p}>This is modal!</Text>
+        <Button onPress={this.dismiss} title='Dismiss' />
       </View>
     )
   }
