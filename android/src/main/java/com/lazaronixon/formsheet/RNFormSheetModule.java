@@ -1,5 +1,5 @@
 
-package com.reactlibrary;
+package com.lazaronixon.formsheet;
 
 import android.app.Activity;
 import android.os.Bundle;
