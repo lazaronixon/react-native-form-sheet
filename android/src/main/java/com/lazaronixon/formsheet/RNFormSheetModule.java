@@ -16,6 +16,7 @@ import com.facebook.react.bridge.ReactContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.ReadableMap;
+import com.facebook.react.uimanager.DisplayMetricsHolder;
 
 import static com.facebook.react.bridge.UiThreadUtil.runOnUiThread;
 import static com.facebook.react.uimanager.PixelUtil.toPixelFromDIP;
@@ -63,7 +64,7 @@ public class RNFormSheetModule extends ReactContextBaseJavaModule {
                 alertDialog = mBuilder.create();
                 alertDialog.setCanceledOnTouchOutside(shouldDismissOnBackgroundViewTap);
                 alertDialog.show();
-                alertDialog.getWindow().setLayout(round(toPixelFromDIP(width)), round(toPixelFromDIP(height)));
+                alertDialog.getWindow().setLayout(toPixelFromIOSPoint(width), toPixelFromIOSPoint(height));
             }
         });
     }
@@ -71,6 +72,10 @@ public class RNFormSheetModule extends ReactContextBaseJavaModule {
     @ReactMethod
     public void dismiss() {
         if (alertDialog != null) alertDialog.dismiss();
+    }
+
+    private int toPixelFromIOSPoint(double value) {
+        return (int) round(value * (DisplayMetricsHolder.getScreenDisplayMetrics().density * 1.1f));
     }
 
 }
