@@ -6,8 +6,11 @@
     "start": "node node_modules/react-native/local-cli/cli.js start"
   },
   "dependencies": {
-    "react": "^16.3.2",
-    "react-native": "^0.55.3",
+    "react": "^16.5.0",
+    "react-native": "^0.57.0",
     "react-native-form-sheet": "file:../"
+  },
+  "devDependencies": {
+    "get-dev-paths": "^0.1.0"
   }
 }
