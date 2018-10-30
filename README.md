@@ -10,8 +10,7 @@ $ react-native link
 ```
 
 ### Installation iOS
-Drop `MZFormSheetPresentationController.framework` and `MZAppearance.framework` from `/node_modules/react-native-form-sheet/ios/` to XCode Embedded Binaries and then check `"Copy items if need"` when it is prompted.
-[Install MZFormSheetPresentationController](https://raw.githubusercontent.com/lazaronixon/react-native-form-sheet/master/Example/screenshots/FormSheetTutoIOS.jpg)
+[Drop](https://raw.githubusercontent.com/lazaronixon/react-native-form-sheet/master/Example/screenshots/FormSheetTutoIOS.jpg) `MZFormSheetPresentationController.framework` and `MZAppearance.framework` from `/node_modules/react-native-form-sheet/ios/` to XCode Embedded Binaries and then check `"Copy items if need"` when it is prompted.
 
 ### Installation Android
 No Steps.
