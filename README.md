@@ -5,15 +5,9 @@ A native dialog solution for React Native (wrapper over ![MZFormSheetPresentatio
 
 ## Getting started
 ```
-$ npm install react-native-form-sheet --save
-$ react-native link
+$ yarn add react-native-turbolinks
+$ cd ios && pod install && cd .. # CocoaPods on iOS needs this extra step
 ```
-
-### Installation iOS
-[Drop](https://raw.githubusercontent.com/lazaronixon/react-native-form-sheet/master/Example/screenshots/FormSheetTutoIOS.jpg) `MZFormSheetPresentationController.framework` and `MZAppearance.framework` from `/node_modules/react-native-form-sheet/ios/` to XCode Embedded Binaries and then check `"Copy items if need"` when it is prompted.
-
-### Installation Android
-No Steps.
 
 ### Warning
 This component only applies to projects made with react-native init or to those made with Create React Native App which have since ejected. For more information about ejecting, please see the ![guide](https://github.com/react-community/create-react-native-app/blob/master/EJECTING.md) on the Create React Native App repository.

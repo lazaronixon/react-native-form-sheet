@@ -1,6 +1,0 @@
-framework module MZFormSheetPresentationController {
-    umbrella header "MZFormSheetPresentationControllerFramework.h"
-    
-    export *
-    module * { export * }
-}

@@ -8,7 +8,7 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/lazaronixon/react-native-turbolinks.git"
+    "url": "https://github.com/lazaronixon/react-native-form-sheet.git"
   },
   "keywords": [
     "react-native",
@@ -19,6 +19,6 @@
     "FormSheet"
   ],
   "peerDependencies": {
-    "react-native": "^0.57.0"
+    "react-native": "^0.61"
   }
 }
