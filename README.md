@@ -1,7 +1,7 @@
 # React Native Form Sheet
 A native dialog solution for React Native (wrapper over ![MZFormSheetPresentationController](https://github.com/m1entus/MZFormSheetPresentationController) and [Dialogs](https://developer.android.com/guide/topics/ui/dialogs.html)).
 
-![React Native Form Sheet](https://raw.githubusercontent.com/lazaronixon/react-native-form-sheet/master/Example/screenshots/formSheetExample.gif)
+![React Native Form Sheet](https://raw.githubusercontent.com/lazaronixon/react-native-form-sheet/master/Example/screenshots/form_sheet_example.gif)
 
 ## Getting started
 ```
