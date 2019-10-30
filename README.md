@@ -5,7 +5,7 @@ A native dialog solution for React Native (wrapper over ![MZFormSheetPresentatio
 
 ## Getting started
 ```
-$ yarn add react-native-turbolinks
+$ yarn add react-native-form-sheet
 $ cd ios && pod install && cd .. # CocoaPods on iOS needs this extra step
 ```
 
