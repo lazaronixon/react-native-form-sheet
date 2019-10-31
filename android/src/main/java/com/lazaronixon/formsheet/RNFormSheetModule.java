@@ -5,7 +5,7 @@ import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnDismissListener;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
+import androidx.appcompat.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 
@@ -18,10 +18,8 @@ import com.facebook.react.bridge.ReactContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.ReadableMap;
-import com.facebook.react.uimanager.DisplayMetricsHolder;
 
 import static com.facebook.react.bridge.UiThreadUtil.runOnUiThread;
-import static java.lang.Math.round;
 
 public class RNFormSheetModule extends ReactContextBaseJavaModule {
 
@@ -46,8 +44,8 @@ public class RNFormSheetModule extends ReactContextBaseJavaModule {
                 Activity activity = getCurrentActivity();
 
                 String component = options.getString("component");
-                double width = options.getDouble("width");
-                double height = options.getDouble("height");
+                int width = options.getInt("width");
+                int height = options.getInt("height");
                 boolean shouldDismissOnBackgroundViewTap = options.getBoolean("shouldDismissOnBackgroundViewTap");
                 ReadableMap props = options.hasKey("passProps") ? options.getMap("passProps") : null;
                 Bundle passProps = props != null ? Arguments.toBundle(props) : null;
@@ -56,7 +54,7 @@ public class RNFormSheetModule extends ReactContextBaseJavaModule {
 
                 LayoutInflater inflater = activity.getLayoutInflater();
                 View dialogView = inflater.inflate(R.layout.dialog_native, null);
-                nativeView = (ReactRootView) dialogView.findViewById(R.id.react_root_view);
+                nativeView = dialogView.findViewById(R.id.react_root_view);
                 nativeView.startReactApplication(host.getReactInstanceManager(), component, passProps);
 
                 mBuilder.setView(dialogView);
@@ -64,13 +62,11 @@ public class RNFormSheetModule extends ReactContextBaseJavaModule {
                 alertDialog = mBuilder.create();
                 alertDialog.setCanceledOnTouchOutside(shouldDismissOnBackgroundViewTap);
                 alertDialog.show();
-                alertDialog.getWindow().setLayout(toPixelFromIOSPoint(width), toPixelFromIOSPoint(height));
+                alertDialog.getWindow().setLayout(width, height);
 
                 alertDialog.setOnDismissListener(new OnDismissListener() {
                     public void onDismiss(final DialogInterface dialog) {
-                        if (nativeView != null) {
-                            nativeView.unmountReactApplication();
-                        }
+                        if (nativeView != null) nativeView.unmountReactApplication();
                     }
                 });
             }
@@ -80,10 +76,6 @@ public class RNFormSheetModule extends ReactContextBaseJavaModule {
     @ReactMethod
     public void dismiss() {
         if (alertDialog != null) alertDialog.dismiss();
-    }
-
-    private int toPixelFromIOSPoint(double value) {
-        return (int) round(value * (DisplayMetricsHolder.getScreenDisplayMetrics().density * 1.1f));
     }
 
 }
