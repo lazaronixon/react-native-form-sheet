@@ -5,8 +5,8 @@ const RNFormSheetManager = NativeModules.RNFormSheetManager || NativeModules.RNF
 class FormSheet {
 
   static present(options) {
-    if (Platform == 'android') options.width  = PixelRatio.getPixelSizeForLayoutSize(options.width)
-    if (Platform == 'android') options.height = PixelRatio.getPixelSizeForLayoutSize(options.height)
+    if (Platform.OS == 'android') options.width  = PixelRatio.getPixelSizeForLayoutSize(options.width)
+    if (Platform.OS == 'android') options.height = PixelRatio.getPixelSizeForLayoutSize(options.height)
     RNFormSheetManager.present({...{ shouldDismissOnBackgroundViewTap: true }, ...options})
   }
 
